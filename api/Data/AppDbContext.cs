@@ -12,6 +12,12 @@ namespace api.Data
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+      modelBuilder.Entity<User>()
+          .HasMany(u => u.Tasks)
+          .WithOne(t => t.User)
+          .HasForeignKey(t => t.UserId)
+          .OnDelete(DeleteBehavior.Cascade);
+
       base.OnModelCreating(modelBuilder);
     }
   }
