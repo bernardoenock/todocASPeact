@@ -30,7 +30,7 @@ artifacts/
 # =============================
 # EF Migrations
 # =============================
-Migrations/
+# Migrations/
 
 # =============================
 # Runtime / Publish
