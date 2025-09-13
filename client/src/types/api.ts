@@ -49,3 +49,27 @@ export interface TasksQueryParams {
   category?: string
   isCompleted?: boolean
 }
+
+// Local
+export interface LocalUser {
+  id: number
+  username: string
+  password: string
+  createdAt: string
+}
+
+export interface LocalTask {
+  id: number
+  title: string
+  description?: string
+  isCompleted: boolean
+  category: string
+  createdAt: string
+  updatedAt?: string
+  userId: number
+}
+
+export interface LocalDB {
+  users: LocalUser[]
+  tasks: LocalTask[]
+}

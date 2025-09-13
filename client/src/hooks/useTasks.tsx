@@ -1,15 +1,16 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
-import { tasksApi } from '@/api/tasksApi'
 import {
   TaskReadDto,
   TaskCreateDto,
   TaskUpdateDto,
   TasksQueryParams,
 } from '@/types/api'
+import { useTasksApi } from '@/api/tasksApi'
 
 const TASKS_QUERY_KEY = 'tasks'
 
 export const useTasks = (params?: TasksQueryParams) => {
+  const tasksApi = useTasksApi()
   return useQuery({
     queryKey: [TASKS_QUERY_KEY, params],
     queryFn: () => tasksApi.getTasks(params),
@@ -17,6 +18,7 @@ export const useTasks = (params?: TasksQueryParams) => {
 }
 
 export const useTask = (id: number) => {
+  const tasksApi = useTasksApi()
   return useQuery({
     queryKey: [TASKS_QUERY_KEY, id],
     queryFn: () => tasksApi.getTask(id),
@@ -26,6 +28,7 @@ export const useTask = (id: number) => {
 
 export const useCreateTask = () => {
   const queryClient = useQueryClient()
+  const tasksApi = useTasksApi()
 
   return useMutation({
     mutationFn: tasksApi.createTask,
@@ -37,6 +40,7 @@ export const useCreateTask = () => {
 
 export const useUpdateTask = () => {
   const queryClient = useQueryClient()
+  const tasksApi = useTasksApi()
 
   return useMutation({
     mutationFn: ({ id, data }: { id: number; data: TaskUpdateDto }) =>
@@ -49,6 +53,7 @@ export const useUpdateTask = () => {
 
 export const useDeleteTask = () => {
   const queryClient = useQueryClient()
+  const tasksApi = useTasksApi()
 
   return useMutation({
     mutationFn: tasksApi.deleteTask,
