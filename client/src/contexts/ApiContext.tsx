@@ -36,6 +36,7 @@ export const ApiProvider = ({ children }: { children: ReactNode }) => {
       const next = !prev
       try {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(next))
+        window.location.reload()
       } catch {
       }
       return next
