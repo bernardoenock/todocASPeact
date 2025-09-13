@@ -1,4 +1,4 @@
-# API TODO (ASP.NET 9 + EF Core + PostgreSQL)
+# TODO List API (ASP.NET 9 + EF Core + PostgreSQL)
 
 **Descrição:**
 API RESTful para gerenciar tarefas (tasks) com CRUD, filtros por categoria/usuário e autenticação JWT. Projeto em **.NET 9 (net9.0)**, Entity Framework Core e PostgreSQL. Pode ser executado **100% local** ou via **Docker Compose**. ⚡
