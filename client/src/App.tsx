@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { HashRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { AuthProvider } from '@/contexts/AuthContext'
 import { ApiProvider } from '@/contexts/ApiContext'
@@ -17,13 +17,12 @@ const queryClient = new QueryClient({
   },
 })
 
-
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
         <ApiProvider>
-          <BrowserRouter>
+          <HashRouter>
             <header className="p-4 flex justify-end">
               <ApiSwitch />
             </header>
@@ -40,7 +39,7 @@ function App() {
               />
               <Route path="/" element={<Navigate to="/tasks" replace />} />
             </Routes>
-          </BrowserRouter>
+          </HashRouter>
         </ApiProvider>
       </AuthProvider>
     </QueryClientProvider>
