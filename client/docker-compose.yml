@@ -1,0 +1,9 @@
+services:
+  client:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: client
+    ports:
+      - "5173:80"
+    restart: unless-stopped
