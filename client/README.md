@@ -1,69 +1,101 @@
-# React + TypeScript + Vite
+# TODO List Client
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este é o **Front End** do projeto **TODO List**, desenvolvido em **React + TypeScript** com **TailwindCSS**, seguindo o padrão de componentes **Atomic Design**.
+A aplicação consome a API disponível em `http://localhost:5000/`, mas também possui um **modo demo** para testar sem precisar subir a API.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ⚙️ Tecnologias utilizadas
 
-## Expanding the ESLint configuration
+* ⚛️ **React 18** + **TypeScript**
+* 🎨 **TailwindCSS**
+* 📦 **Vite** (build e dev server)
+* 🔗 **React Router DOM**
+* ✅ **React Hook Form + Yup** (validação de formulários)
+* 🔄 **React Query** (gerenciamento de dados assíncronos)
+* 🔧 **ESLint + Prettier** (padrões de código e formatação)
+* 🧩 **Atomic Design** (organização de componentes)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🚀 Como executar o projeto
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+Você pode rodar o Front End de **duas formas**:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 🔹 1. Usando Docker (recomendado)
+
+Na raiz do projeto, execute:
+
+```bash
+docker compose -f client/docker-compose.yml up --build
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Isso irá:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+* Instalar dependências
+* Subir o container com a aplicação
+* Disponibilizar o projeto no navegador em `http://localhost:5173/`
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
+
+### 🔹 2. Rodando localmente sem Docker
+
+Certifique-se de ter o **Node.js 18+** instalado.
+
+1. Acesse a pasta do client:
+
+   ```bash
+   cd client
+   ```
+2. Instale as dependências:
+
+   ```bash
+   npm install
+   ```
+3. Rode o ambiente de desenvolvimento:
+
+   ```bash
+   npm run dev
+   ```
+4. Acesse no navegador:
+
+   ```
+   http://localhost:5173/
+   ```
+
+---
+
+## 🌐 Conexão com a API
+
+Por padrão, o projeto consome a API em:
+
 ```
+http://localhost:5000/
+```
+
+* Para ativar a API, vá até a pasta `api/` e siga as instruções do arquivo [`api/README.md`](../api/README.md).
+* Caso não queira subir a API, clique no botão **"Modo Demo"** na aplicação. Ele habilita um modo de demonstração para usar o Front sem precisar da API.
+
+---
+
+## 📂 Estrutura do projeto (Atomic Design)
+
+A organização segue o padrão **Atomic Design**:
+
+```
+src/
+ ├── assets/         # Imagens, ícones e estáticos
+ ├── components/     # Componentes reutilizáveis
+ │    ├── atoms/     # Elementos básicos (botões, inputs, labels)
+ │    ├── molecules/ # Combinações de atoms (form groups, cards)
+ │    ├── organisms/ # Combinações complexas (listas, headers)
+ │    └── templates/ # Estrutura de páginas
+ ├── pages/          # Páginas da aplicação
+ ├── hooks/          # Hooks customizados
+ ├── api/       # Requisições HTTP (axios)
+ ├── types/          # Definições de tipos (TypeScript)
+ ├── utils/          # Funções utilitárias
+ └── main.tsx        # Entrada principal
+```
+
+---
